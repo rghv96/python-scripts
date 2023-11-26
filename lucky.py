@@ -1,10 +1,11 @@
 #! python3
 # lucky.py - Opens several Google Search Results
 
-import requests, sys, webbrowser, bs4
+import sys, webbrowser, bs4
+from security import safe_requests
 
 print ('Googling...') # display text while downloading the Google page
-res = requests.get('http://google.com/search?q='+' '.join(sys.argv[1:]))
+res = safe_requests.get('http://google.com/search?q='+' '.join(sys.argv[1:]))
 res.raise_for_status()
 
 # Retrieve top search result links
